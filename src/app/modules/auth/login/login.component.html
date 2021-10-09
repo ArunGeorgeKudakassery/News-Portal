@@ -1,0 +1,71 @@
+<div class="container-fluid d-flex align-items-center">
+  <div class="col-4 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-12 text-center">
+          <div>
+            <img
+              src="https://static01.nyt.com/vi-assets/images/share/1200x1200_t.png"
+              alt="logo"
+              style="height: 30px; width: 30px"
+            />
+          </div>
+          <div class="form-group">
+            <b>New York Times</b>
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="errorToast">
+            User do not exists!!
+          </div>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="email"> Email Address</label>
+              <input
+                type="email"
+                name="email"
+                id="emailInput"
+                class="form-control"
+                placeholder="Enter email"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="password"> Password </label>
+              <input
+                type="password"
+                name="password"
+                id="passwordInput"
+                class="form-control"
+                formControlName="password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <button
+                class="col-12 btn btn-primary"
+                type="submit"
+                [disabled]="!loginForm.valid"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="col-12 form-group text-right">
+          <label for="signup">New user?</label>
+          <a
+            routerLink="/auth/register-user"
+            class="ml-2"
+            style="text-decoration: underline"
+            >Sign up</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
