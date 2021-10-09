@@ -6,15 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrivateLayoutComponent } from './shared/layouts/private-layout/private-layout.component';
 import { PublicLayoutComponent } from './shared/layouts/public-layout/public-layout.component';
-import { SidebarComponent } from './shared/layouts/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PublicLayoutComponent,
-    PrivateLayoutComponent,
-    SidebarComponent,
-  ],
+  declarations: [AppComponent, PublicLayoutComponent, PrivateLayoutComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

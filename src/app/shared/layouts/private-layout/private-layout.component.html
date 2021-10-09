@@ -1,8 +1,18 @@
-<div class="col-12 row">
-  <div class="col-4 pl-0">
-    <app-sidebar></app-sidebar>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" style="cursor: pointer">
+        <span class="nav-link" routerLink="/home/read-later">Saved Items</span>
+      </li>
+      <li class="nav-item ml-3">
+        <img
+          style="width: 50px; height: 50px; cursor: pointer"
+          src="https://cdn.iconscout.com/icon/premium/png-256-thumb/profile-1506810-1278719.png"
+          alt="profile"
+          routerLink="/auth/edit-profile"
+        />
+      </li>
+    </ul>
   </div>
-  <div class="col-8">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+</nav>
+<router-outlet></router-outlet>

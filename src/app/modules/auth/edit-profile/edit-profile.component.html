@@ -1,0 +1,120 @@
+<div class="container-fluid d-flex align-items-center">
+  <div class="col-6 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-12 text-center">
+          <div>
+            <img
+              src="https://static01.nyt.com/vi-assets/images/share/1200x1200_t.png"
+              alt="logo"
+              style="height: 30px; width: 30px"
+            />
+          </div>
+          <div class="form-group">
+            <b>Edit Profile</b>
+          </div>
+          <div class="alert alert-success" role="alert" *ngIf="successToast">
+            Profile updated successfully
+          </div>
+        </div>
+        <div class="col-12 text-right form-group">
+          <button class="btn btn-danger" (click)="deletAccount()">
+            Delete Account
+          </button>
+        </div>
+        <form [formGroup]="profileForm" (ngSubmit)="updateUser()">
+          <div class="col-12 form-group">
+            <label for="displayName"> Display Name </label>
+            <input
+              type="text"
+              name="displayName"
+              id="displayName"
+              class="form-control"
+              formControlName="displayName"
+              placeholder="Enter name"
+            />
+            <small
+              *ngIf="
+                isSubmitted &&
+                profileForm.controls.displayName.hasError('symbols')
+              "
+              class="form-text text-danger"
+            >
+              Special chracters are not allowed
+            </small>
+            <small
+              *ngIf="
+                isSubmitted &&
+                profileForm.controls.displayName.hasError('required')
+              "
+              class="form-text text-danger"
+            >
+              Display name is required
+            </small>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="email"> Email Address</label>
+              <input
+                type="email"
+                name="email"
+                id="emailInput"
+                class="form-control"
+                placeholder="Enter email"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="password"> Password </label>
+              <input
+                type="text"
+                name="password"
+                id="passwordInput"
+                class="form-control"
+                formControlName="password"
+                placeholder="Password"
+              />
+              <small
+                *ngIf="
+                  isSubmitted &&
+                  profileForm.controls.password.hasError('required')
+                "
+                class="form-text text-danger"
+              >
+                Password is required
+              </small>
+              <small
+                *ngIf="
+                  isSubmitted &&
+                  profileForm.controls.password.hasError('maxlength')
+                "
+                class="form-text text-danger"
+              >
+                Maximum length allowed is 20!
+              </small>
+              <small
+                *ngIf="
+                  isSubmitted &&
+                  !profileForm.controls.password.hasError('maxlength') &&
+                  profileForm.controls.password.hasError('symbols')
+                "
+                class="form-text text-danger"
+              >
+                Special chracters are not allowed
+              </small>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <button class="col-12 btn btn-primary" type="submit">
+                Update Profile
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
