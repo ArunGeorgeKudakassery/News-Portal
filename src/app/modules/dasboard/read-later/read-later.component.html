@@ -1,0 +1,56 @@
+<div
+  *ngIf="!savedNews || !savedNews.length"
+  class="card text-center no-content no-news"
+>
+  No news to show
+</div>
+<ng-container *ngIf="savedNews && savedNews.length">
+  <div class="col-12 mt-3">
+    <div class="col-12 text-right">
+      <button
+        class="btn btn-primary"
+        [disabled]="page === 0"
+        (click)="changePage('prev')"
+      >
+        <<
+      </button>
+      <button
+        class="btn btn-primary ml-2"
+        [disabled]="page === masterValueList.length / limit"
+        (click)="changePage('next')"
+      >
+        >>
+      </button>
+    </div>
+    <div class="col-12 row">
+      <div
+        class="card p-0 card-width m-2"
+        *ngFor="let news of savedNews"
+        style="cursor: pointer"
+        (click)="openNews(news['url'])"
+      >
+        <div class="card-body p-0">
+          <div class="text-center title-block p-2">
+            <b>
+              {{ news["title"] }}
+            </b>
+          </div>
+        </div>
+        <div class="card-body">
+          <div>
+            <span [class.no-content]="!news['abstract']">
+              {{
+                news["abstract"] ? news["abstract"] : "No abstract available"
+              }}
+            </span>
+          </div>
+          <div>
+            <button class="btn mt-3 float-right" (click)="removeFromList(news)">
+              Remove from list
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
