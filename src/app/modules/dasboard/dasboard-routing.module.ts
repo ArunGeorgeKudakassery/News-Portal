@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewsResolver } from 'src/app/shared/layouts/resolvers/news.resolve';
 import { SectionsResolve } from 'src/app/shared/layouts/resolvers/sections.resolve';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReadLaterComponent } from './read-later/read-later.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
       sections: SectionsResolve,
       news: NewsResolver,
     },
+  },
+  {
+    path: 'read-later',
+    component: ReadLaterComponent,
   },
 ];
 
